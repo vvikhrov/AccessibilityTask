@@ -2,6 +2,7 @@ package com.sweethome.shop
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
 
     private lateinit var catalog: RecyclerView
     private lateinit var cartItemsAmount: TextView
-    private lateinit var cartIcon: View
+    private lateinit var cartButton: View
     private val adapter: CatalogAdapter = CatalogAdapter()
     private val onItemClickListener: OnItemClickListener = object : OnItemClickListener {
         override fun onItemClick(model: FullItemViewModel) {
@@ -38,6 +39,11 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
                     cartItemsAmount.visibility = View.VISIBLE
                     cartItemsAmount.text = itemsCount.toString()
                 }
+                cartButton.contentDescription = resources.getQuantityString(
+                    R.plurals.count_items_description,
+                    itemsCount,
+                    itemsCount
+                )
             }
         }
     }
@@ -49,13 +55,13 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
         catalog.adapter = adapter
         adapter.setOnItemClickListener(onItemClickListener)
         cartItemsAmount = view.findViewById(R.id.items_count)
-        cartIcon = view.findViewById(R.id.cart_icon)
+        cartButton = view.findViewById(R.id.cart_button)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        cartIcon.setOnClickListener {
+        cartButton.setOnClickListener {
             presenter.onCartClick()
         }
         presenter.attach(mvpView)

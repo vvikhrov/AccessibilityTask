@@ -6,14 +6,25 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sweethome.R
+import com.sweethome.extensions.setAccessibilityClassName
 
 class SelectorAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     private val itemsList = arrayListOf<SelectorItemModel>()
     private var checkedChangeListener: CheckedChangeListener? = null
 
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
@@ -39,13 +50,28 @@ class SelectorAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         holder.icon.setImageResource(item.imageId)
         holder.checkbox.isChecked = item.checked
 
+        holder.itemView.setOnClickListener {
+            checkedChangeListener?.onCheckedChange(
+                item,
+                !holder.checkbox.isChecked
+            )
+        }
         holder.checkbox.setOnClickListener {
             checkedChangeListener?.onCheckedChange(
                 item,
-                !item.checked
+                !holder.checkbox.isChecked
             )
-
         }
+        ViewCompat.setAccessibilityDelegate(holder.itemView, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host:View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = CheckBox::class.java.name
+                info.isCheckable = true
+                info.isChecked = holder.checkbox.isChecked
+            }
+        })
     }
 
     fun setCheckedChangeListener(changeListener: CheckedChangeListener) {

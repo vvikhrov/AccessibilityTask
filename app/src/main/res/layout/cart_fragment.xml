@@ -30,6 +30,7 @@
         android:src="@drawable/empty_cart"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/description_empty_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

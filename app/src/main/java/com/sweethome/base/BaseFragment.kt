@@ -4,10 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.CallSuper
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.fragment.app.Fragment
 import com.sweethome.R
+import com.sweethome.extensions.setAccessibilityClassNameButton
 
 abstract class BaseFragment<T: MockPresenter<V>, V: MvpView> : Fragment(), MvpView {
 
@@ -33,6 +38,15 @@ abstract class BaseFragment<T: MockPresenter<V>, V: MvpView> : Fragment(), MvpVi
             activity?.onBackPressed()
         }
         val shoppingCart = view.findViewById<View>(R.id.cart_button)
+        shoppingCart.setAccessibilityClassNameButton()
+        ViewCompat.setAccessibilityDelegate(shoppingCart, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host:View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = Button::class.java.name
+            }
+        })
         if (showCart()) {
             shoppingCart.visibility = View.VISIBLE
         }
