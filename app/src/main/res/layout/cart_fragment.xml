@@ -78,7 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="€3,835" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirm"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -87,6 +87,7 @@
             android:background="@drawable/round_corner_rectangle"
             android:gravity="center"
             android:text="@string/confirm_checkout"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"

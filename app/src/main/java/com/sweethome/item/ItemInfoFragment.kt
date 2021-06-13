@@ -2,12 +2,8 @@ package com.sweethome.item
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.AccessibilityDelegateCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
 import com.sweethome.base.MvpView
@@ -61,14 +57,6 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
         modelName = view.findViewById(R.id.model)
         price = view.findViewById(R.id.price)
         cartBtn = view.findViewById(R.id.cart_button)
-        ViewCompat.setAccessibilityDelegate(addToCartButton, object: AccessibilityDelegateCompat() {
-            override fun onInitializeAccessibilityNodeInfo(host:View,
-                                                           info: AccessibilityNodeInfoCompat
-            ) {
-                super.onInitializeAccessibilityNodeInfo(host, info)
-                info.className = Button::class.java.name
-            }
-        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -2,12 +2,8 @@ package com.sweethome.cart
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.AccessibilityDelegateCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +32,7 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
                 itemsCount.text = getString(R.string.items_on, viewModel.itemsCount)
                 fullPrice.text = viewModel.price
                 confirmButton.alpha = 1f
+                confirmButton.isEnabled = true
                 confirmButton.setOnClickListener(checkoutClickListener)
             }
 
@@ -46,6 +43,7 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
                 itemsCount.visibility = View.GONE
                 fullPrice.visibility = View.GONE
                 confirmButton.alpha = 0.3f
+                confirmButton.isEnabled = false
                 confirmButton.setOnClickListener(null)
             }
         }
@@ -62,15 +60,6 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
         shipment = view.findViewById(R.id.shipment_condition)
         itemsCount = view.findViewById(R.id.items_count)
         fullPrice = view.findViewById(R.id.total_price)
-
-        ViewCompat.setAccessibilityDelegate(confirmButton, object: AccessibilityDelegateCompat() {
-            override fun onInitializeAccessibilityNodeInfo(host: View,
-                                                           info: AccessibilityNodeInfoCompat
-            ) {
-                super.onInitializeAccessibilityNodeInfo(host, info)
-                info.className = Button::class.java.name
-            }
-        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
