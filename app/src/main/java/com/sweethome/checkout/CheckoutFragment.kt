@@ -1,7 +1,6 @@
 package com.sweethome.checkout
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -13,10 +12,8 @@ import com.sweethome.base.selector.CheckedChangeListener
 import com.sweethome.base.selector.HorizontalSelector
 import com.sweethome.base.selector.SelectorItemModel
 import com.sweethome.checkout.delivery.DeliveryItemView
-import com.sweethome.checkout.delivery.DeliveryType
 import com.sweethome.checkout.delivery.DeliveryViewModel
 import com.sweethome.checkout.delivery.OnChosenListener
-import kotlin.collections.ArrayList
 
 class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
 
@@ -47,6 +44,7 @@ class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
                 itemsPrice.text = getString(R.string.subtotal_price, subtotalPriceText)
                 shipmentPrice.text = getString(R.string.shipment_price,  shipmentPriceText)
                 totalPrice.text = totalPriceText
+                totalPrice.contentDescription = getString(R.string.total_price_title) + totalPriceText
             }
 
             override fun updateDeliveryTypes(deliveryTypes: ArrayList<DeliveryViewModel>) {

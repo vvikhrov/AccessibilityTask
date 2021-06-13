@@ -112,6 +112,7 @@
             android:id="@+id/shipment_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/subtotal"
             android:text="@string/shipment_price"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -120,6 +121,8 @@
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:labelFor="@id/total_price"
             android:text="@string/total_price_title"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/total_price"
@@ -129,6 +132,7 @@
             android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/shipment_price"
             android:fontFamily="sans-serif"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -138,7 +142,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirm_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -146,6 +150,7 @@
         android:background="@drawable/round_corner_rectangle"
         android:gravity="center"
         android:text="@string/checkout_confirm"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
