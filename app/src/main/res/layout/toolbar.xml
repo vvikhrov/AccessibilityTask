@@ -30,36 +30,12 @@
         android:textSize="20sp"
         tools:text="@tools:sample/lorem" />
 
-    <FrameLayout
+    <com.sweethome.base.custom_view.CartButton
         android:id="@+id/cart_button"
         android:layout_width="56dp"
-        android:focusable="true"
-        android:clickable="true"
         android:layout_height="56dp"
         android:layout_gravity="end"
         tools:visibility="visible"
-        android:visibility="gone">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/cart_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_shopping_cart" />
-
-        <TextView
-            android:id="@+id/items_count"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/blue_circle"
-            android:gravity="center"
-            android:text="2"
-            android:textColor="@color/white"
-            android:textSize="11dp" />
-
-    </FrameLayout>
+        android:visibility="gone"/>
 
 </FrameLayout>

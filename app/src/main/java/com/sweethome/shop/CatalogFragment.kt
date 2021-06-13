@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
 import com.sweethome.base.MvpView
+import com.sweethome.base.custom_view.CartButton
 import com.sweethome.item.FullItemViewModel
 import com.sweethome.shop.catalog.CatalogAdapter
 import com.sweethome.shop.catalog.CategoryViewModel
@@ -20,8 +21,7 @@ import com.sweethome.shop.category.OnItemClickListener
 class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
 
     private lateinit var catalog: RecyclerView
-    private lateinit var cartItemsAmount: TextView
-    private lateinit var cartButton: View
+    private lateinit var cartButton: CartButton
     private val adapter: CatalogAdapter = CatalogAdapter()
     private val onItemClickListener: OnItemClickListener = object : OnItemClickListener {
         override fun onItemClick(model: FullItemViewModel) {
@@ -36,14 +36,7 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
             }
 
             override fun updateItemsCount(itemsCount: Int) {
-                if (itemsCount == 0) {
-                    cartItemsAmount.visibility = View.GONE
-                } else {
-                    cartItemsAmount.visibility = View.VISIBLE
-                    cartItemsAmount.text = itemsCount.toString()
-                }
-                val goodsCountText = resources.getQuantityString(R.plurals.d_goods, itemsCount, itemsCount)
-                cartButton.contentDescription = "${getString(R.string.cart_title)}, $goodsCountText"
+               cartButton.setItemCount(itemsCount)
             }
         }
     }
@@ -54,16 +47,7 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
         catalog.layoutManager = LinearLayoutManager(context)
         catalog.adapter = adapter
         adapter.setOnItemClickListener(onItemClickListener)
-        cartItemsAmount = view.findViewById(R.id.items_count)
         cartButton = view.findViewById(R.id.cart_button)
-        ViewCompat.setAccessibilityDelegate(cartButton, object: AccessibilityDelegateCompat() {
-            override fun onInitializeAccessibilityNodeInfo(host:View,
-                                                           info: AccessibilityNodeInfoCompat
-            ) {
-                super.onInitializeAccessibilityNodeInfo(host, info)
-                info.className = Button::class.java.name
-            }
-        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
