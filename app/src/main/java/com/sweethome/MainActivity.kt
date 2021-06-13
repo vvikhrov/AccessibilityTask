@@ -1,7 +1,7 @@
 package com.sweethome
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (rootRouter.onBackPressed()) {
             return
+        } else {
+            finish()
         }
-        super.onBackPressed()
     }
 }

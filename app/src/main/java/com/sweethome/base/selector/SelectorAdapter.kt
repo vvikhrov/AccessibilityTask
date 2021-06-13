@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sweethome.R
 
@@ -13,6 +16,14 @@ class SelectorAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     private val itemsList = arrayListOf<SelectorItemModel>()
     private var checkedChangeListener: CheckedChangeListener? = null
+
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -44,7 +55,13 @@ class SelectorAdapter : RecyclerView.Adapter<ItemViewHolder>() {
                 item,
                 !item.checked
             )
+        }
 
+        holder.itemView.setOnClickListener {
+            checkedChangeListener?.onCheckedChange(
+                item,
+                !item.checked
+            )
         }
     }
 
@@ -58,6 +75,22 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val subtitle: TextView = itemView.findViewById(R.id.subtitle)
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val checkbox: CheckBox = itemView.findViewById(R.id.checkbox)
+
+    init {
+        ViewCompat.setAccessibilityDelegate(itemView, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = CheckBox::class.java.name
+                info.isCheckable = true
+                info.isChecked = checkbox.isChecked
+            }
+        })
+
+
+
+    }
 }
 
 interface CheckedChangeListener {

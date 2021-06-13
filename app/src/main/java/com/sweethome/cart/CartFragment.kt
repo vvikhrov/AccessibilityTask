@@ -26,20 +26,25 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
         mvpView = object : CartMvpView {
             override fun onDataLoaded(viewModel: CartModel) {
                 adapter.updateList(viewModel.items)
+                itemsList.visibility = View.VISIBLE
                 emptyCart.visibility = View.GONE
                 shipment.text = getString(R.string.delivery_from, viewModel.shipment)
                 itemsCount.text = getString(R.string.items_on, viewModel.itemsCount)
                 fullPrice.text = viewModel.price
+                fullPrice.contentDescription = getString(R.string.total_price_title) + viewModel.price
                 confirmButton.alpha = 1f
+                confirmButton.isEnabled = true
                 confirmButton.setOnClickListener(checkoutClickListener)
             }
 
             override fun showEmptyCart() {
+                itemsList.visibility = View.GONE
                 emptyCart.visibility = View.VISIBLE
                 shipment.visibility = View.GONE
                 itemsCount.visibility = View.GONE
                 fullPrice.visibility = View.GONE
                 confirmButton.alpha = 0.3f
+                confirmButton.isEnabled = false
                 confirmButton.setOnClickListener(null)
             }
         }

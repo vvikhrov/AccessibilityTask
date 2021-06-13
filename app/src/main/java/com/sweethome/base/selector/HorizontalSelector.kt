@@ -21,6 +21,7 @@ class HorizontalSelector(context: Context, attributeSet: AttributeSet): Recycler
             }
         }
         adapter = selectorAdapter
+        itemAnimator = null
     }
 
     fun updateValues(values: ArrayList<SelectorItemModel>) {

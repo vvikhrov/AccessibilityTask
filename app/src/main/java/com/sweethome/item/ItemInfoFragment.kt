@@ -7,29 +7,25 @@ import android.widget.TextView
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
 import com.sweethome.base.MvpView
+import com.sweethome.base.custom_view.CartButton
+import com.sweethome.base.custom_view.DesignerButton
 
 class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
 
-    private lateinit var cartItemsAmount: TextView
     private lateinit var aboutText: TextView
     private lateinit var modelName: TextView
     private lateinit var addToCartButton: View
     private lateinit var image: ImageView
-    private lateinit var designer: TextView
+    private lateinit var designerButton: DesignerButton
     private lateinit var price: TextView
-    private lateinit var cartBtn: View
+    private lateinit var cartBtn: CartButton
     private lateinit var itemId: String
     private lateinit var collection: String
 
     init {
         mvpView = object : ItemInfoMvpView {
             override fun updateItemsCount(itemsCount: Int) {
-                if (itemsCount == 0) {
-                    cartItemsAmount.visibility = View.GONE
-                } else {
-                    cartItemsAmount.visibility = View.VISIBLE
-                    cartItemsAmount.text = itemsCount.toString()
-                }
+                cartBtn.setItemCount(itemsCount)
             }
 
             override fun updateInfo(viewModel: FullItemViewModel) {
@@ -38,7 +34,7 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
                     "drawable", context?.packageName
                 )
                 image.setImageResource(imageId)
-                designer.setText(viewModel.designer)
+                designerButton.setDesignerName(viewModel.designer)
                 price.text = "${viewModel.currency} ${viewModel.price}"
                 modelName.text = viewModel.model
                 aboutText.text = viewModel.about
@@ -55,14 +51,12 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
     override fun onViewInflated(view: View) {
         super.onViewInflated(view)
         image = view.findViewById(R.id.image)
-        designer = view.findViewById(R.id.designer)
+        designerButton = view.findViewById(R.id.designerButton)
         addToCartButton = view.findViewById(R.id.add_to_cart)
-        cartItemsAmount = view.findViewById(R.id.items_count)
         aboutText = view.findViewById(R.id.about_text)
         modelName = view.findViewById(R.id.model)
         price = view.findViewById(R.id.price)
-        cartBtn = view.findViewById(R.id.cart_icon)
-
+        cartBtn = view.findViewById(R.id.cart_button)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
