@@ -2,8 +2,12 @@ package com.sweethome.cart
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +30,7 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
         mvpView = object : CartMvpView {
             override fun onDataLoaded(viewModel: CartModel) {
                 adapter.updateList(viewModel.items)
+                itemsList.visibility = View.VISIBLE
                 emptyCart.visibility = View.GONE
                 shipment.text = getString(R.string.delivery_from, viewModel.shipment)
                 itemsCount.text = getString(R.string.items_on, viewModel.itemsCount)
@@ -35,6 +40,7 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
             }
 
             override fun showEmptyCart() {
+                itemsList.visibility = View.GONE
                 emptyCart.visibility = View.VISIBLE
                 shipment.visibility = View.GONE
                 itemsCount.visibility = View.GONE
@@ -56,6 +62,15 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
         shipment = view.findViewById(R.id.shipment_condition)
         itemsCount = view.findViewById(R.id.items_count)
         fullPrice = view.findViewById(R.id.total_price)
+
+        ViewCompat.setAccessibilityDelegate(confirmButton, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = Button::class.java.name
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

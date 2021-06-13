@@ -20,6 +20,8 @@
     <string name="time_from_to">%1$s-%2$s дней</string>
     <string name="delivery_time">%s дня</string>
     <string name="exit">Выйти</string>
+    <string name="cart_is_empty">Корзина пуста</string>
+
 
     <plurals name="d_goods">
         <item quantity="one">%1$d товар</item>
