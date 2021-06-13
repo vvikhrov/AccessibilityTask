@@ -23,6 +23,7 @@ class DesignerButton @JvmOverloads constructor(
         inflate(context, R.layout.view_designer_button, this)
         isClickable = true
         isFocusable = true
+        isEnabled = false //нет экрана
         nameTextView = findViewById(R.id.designer)
 
         ViewCompat.setAccessibilityDelegate(this, object: AccessibilityDelegateCompat() {
