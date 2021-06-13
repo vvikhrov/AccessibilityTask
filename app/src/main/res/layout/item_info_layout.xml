@@ -94,45 +94,10 @@
                 android:layout_height="1dp"
                 android:background="@color/black_12" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.sweethome.base.custom_view.DesignerButton
+                android:id="@+id/designerButton"
                 android:layout_width="match_parent"
-                android:layout_height="52dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/designer_field"
-                    android:textSize="16sp"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintEnd_toStartOf="@id/designer"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <TextView
-                    android:id="@+id/designer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/designer_field"
-                    android:layout_marginEnd="12dp"
-                    android:textSize="16sp"
-                    android:fontFamily="sans-serif"
-                    app:layout_constraintEnd_toStartOf="@id/forward"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/forward"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    app:srcCompat="@drawable/ic_arrow_forward"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                android:layout_height="52dp" />
 
         </LinearLayout>
 

@@ -17,7 +17,7 @@ class CartButton @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    private lateinit var cartItemsAmount: TextView
+    private val cartItemsAmount: TextView
 
     init {
         inflate(context, R.layout.view_cart_button, this)

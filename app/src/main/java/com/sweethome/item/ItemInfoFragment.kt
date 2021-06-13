@@ -2,12 +2,17 @@ package com.sweethome.item
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
 import com.sweethome.base.MvpView
 import com.sweethome.base.custom_view.CartButton
+import com.sweethome.base.custom_view.DesignerButton
 
 class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
 
@@ -15,7 +20,7 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
     private lateinit var modelName: TextView
     private lateinit var addToCartButton: View
     private lateinit var image: ImageView
-    private lateinit var designer: TextView
+    private lateinit var designerButton: DesignerButton
     private lateinit var price: TextView
     private lateinit var cartBtn: CartButton
     private lateinit var itemId: String
@@ -33,7 +38,7 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
                     "drawable", context?.packageName
                 )
                 image.setImageResource(imageId)
-                designer.setText(viewModel.designer)
+                designerButton.setDesignerName(viewModel.designer)
                 price.text = "${viewModel.currency} ${viewModel.price}"
                 modelName.text = viewModel.model
                 aboutText.text = viewModel.about
@@ -50,12 +55,20 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
     override fun onViewInflated(view: View) {
         super.onViewInflated(view)
         image = view.findViewById(R.id.image)
-        designer = view.findViewById(R.id.designer)
+        designerButton = view.findViewById(R.id.designerButton)
         addToCartButton = view.findViewById(R.id.add_to_cart)
         aboutText = view.findViewById(R.id.about_text)
         modelName = view.findViewById(R.id.model)
         price = view.findViewById(R.id.price)
         cartBtn = view.findViewById(R.id.cart_button)
+        ViewCompat.setAccessibilityDelegate(addToCartButton, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host:View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = Button::class.java.name
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
