@@ -31,6 +31,7 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
                 shipment.text = getString(R.string.delivery_from, viewModel.shipment)
                 itemsCount.text = getString(R.string.items_on, viewModel.itemsCount)
                 fullPrice.text = viewModel.price
+                fullPrice.contentDescription = getString(R.string.total_price_title) + viewModel.price
                 confirmButton.alpha = 1f
                 confirmButton.isEnabled = true
                 confirmButton.setOnClickListener(checkoutClickListener)
