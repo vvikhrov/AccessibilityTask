@@ -16,6 +16,7 @@ import com.sweethome.checkout.delivery.DeliveryItemView
 import com.sweethome.checkout.delivery.DeliveryType
 import com.sweethome.checkout.delivery.DeliveryViewModel
 import com.sweethome.checkout.delivery.OnChosenListener
+import com.sweethome.extensions.setAccessibilityClassNameButton
 import kotlin.collections.ArrayList
 
 class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
@@ -47,6 +48,7 @@ class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
                 itemsPrice.text = getString(R.string.subtotal_price, subtotalPriceText)
                 shipmentPrice.text = getString(R.string.shipment_price,  shipmentPriceText)
                 totalPrice.text = totalPriceText
+                totalPrice.contentDescription = getString(R.string.description_total_price_title, totalPriceText)
             }
 
             override fun updateDeliveryTypes(deliveryTypes: ArrayList<DeliveryViewModel>) {
@@ -93,6 +95,7 @@ class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
         confirmButton.setOnClickListener {
             presenter.onConfirm()
         }
+        confirmButton.setAccessibilityClassNameButton()
 
     }
 

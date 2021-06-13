@@ -18,4 +18,19 @@
     <string name="payment_type">Payment</string>
     <string name="time_from_to">%1$s-%2$s days</string>
     <string name="delivery_time">%s days</string>
+    <string name="description_back">Back</string>
+    <string name="description_cart">Cart</string>
+    <string name="description_empty_cart">Cart is empty</string>
+    <string name="description_price">Price: %s</string>
+    <string name="description_all_price">Price for all: %s</string>
+    <string name="description_total_price_title">To pay: %s</string>
+
+    <plurals name="count_items_description">
+        <item quantity="zero">cart is empty</item>
+        <item quantity="one">cart %1$d items</item>
+        <item quantity="two">cart %1$d items</item>
+        <item quantity="few">cart %1$d items</item>
+        <item quantity="many">cart %1$d items</item>
+        <item quantity="other">cart %1$d items</item>
+    </plurals>
 </resources>

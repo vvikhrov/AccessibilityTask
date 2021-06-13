@@ -3,9 +3,14 @@ package com.sweethome.checkout.delivery
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.sweethome.R
 
 class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
@@ -21,6 +26,7 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
 
     var onChosenListener: OnChosenListener? = null
 
+
     init {
         LayoutInflater.from(context).inflate(R.layout.delivery_type_item, this, true)
 
@@ -28,6 +34,17 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
         time = findViewById(R.id.time)
         price = findViewById(R.id.price)
         toggle = findViewById(R.id.toggle)
+
+        ViewCompat.setAccessibilityDelegate(this, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = CheckBox::class.java.name
+                info.isCheckable = true
+                info.isChecked = chosen
+            }
+        })
     }
 
     fun update(item: DeliveryViewModel) {
@@ -45,7 +62,7 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
             chosen = false
             toggle.setImageResource(R.drawable.ic_toggle_unchecked)
         }
-        toggle.setOnClickListener {
+        setOnClickListener {
             onChosenListener?.onItemChosen(item.id)
         }
     }

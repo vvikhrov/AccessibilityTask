@@ -24,6 +24,6 @@ class MainActivity : AppCompatActivity() {
         if (rootRouter.onBackPressed()) {
             return
         }
-        super.onBackPressed()
+        finish()
     }
 }

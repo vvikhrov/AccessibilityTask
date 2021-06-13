@@ -19,4 +19,17 @@
     <string name="payment_type">Способ оплаты</string>
     <string name="time_from_to">%1$s-%2$s дней</string>
     <string name="delivery_time">%s дня</string>
+    <string name="description_back">Назад</string>
+    <string name="description_cart">Корзина</string>
+    <string name="description_empty_cart">Корзина пуста</string>
+    <string name="description_price">Цена: %s</string>
+    <string name="description_all_price">Цена за товары: %s</string>
+    <string name="description_total_price_title">К оплате: %s</string>
+
+    <plurals name="count_items_description">
+        <item quantity="one">Корзина, %1$d товар</item>
+        <item quantity="few">Корзина, %1$d товаров</item>
+        <item quantity="many">Корзина, %1$d товаров</item>
+        <item quantity="other">Корзина, %1$d товаров</item>
+    </plurals>
 </resources>

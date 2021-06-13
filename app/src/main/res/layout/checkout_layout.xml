@@ -28,6 +28,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="6dp"
+                android:accessibilityHeading="true"
                 android:text="@string/shipment_address"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="6dp"
+                android:accessibilityHeading="true"
                 android:text="@string/delivery_type"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +65,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="6dp"
+                android:accessibilityHeading="true"
                 android:text="@string/payment_type"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -103,29 +106,35 @@
             android:id="@+id/shipment_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/subtotal"
             android:text="@string/shipment_price"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:targetApi="lollipop_mr1" />
 
         <TextView
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total_price_title"
+            android:importantForAccessibility="no"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/total_price"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:targetApi="lollipop_mr1" />
 
         <TextView
             android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/shipment_price"
             android:fontFamily="sans-serif"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="₽ 3835" />
+            tools:text="₽ 3835"
+            tools:targetApi="lollipop_mr1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

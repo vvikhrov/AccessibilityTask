@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
 import com.sweethome.base.MvpView
+import com.sweethome.extensions.setAccessibilityClassNameButton
 
 class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
 
@@ -27,20 +28,21 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
             override fun onDataLoaded(viewModel: CartModel) {
                 adapter.updateList(viewModel.items)
                 emptyCart.visibility = View.GONE
+                itemsList.visibility = View.VISIBLE
                 shipment.text = getString(R.string.delivery_from, viewModel.shipment)
                 itemsCount.text = getString(R.string.items_on, viewModel.itemsCount)
                 fullPrice.text = viewModel.price
-                confirmButton.alpha = 1f
-                confirmButton.setOnClickListener(checkoutClickListener)
+                fullPrice.contentDescription = getString(R.string.description_all_price, viewModel.price)
+                confirmButton.isEnabled = true
             }
 
             override fun showEmptyCart() {
                 emptyCart.visibility = View.VISIBLE
+                itemsList.visibility = View.GONE
                 shipment.visibility = View.GONE
                 itemsCount.visibility = View.GONE
                 fullPrice.visibility = View.GONE
-                confirmButton.alpha = 0.3f
-                confirmButton.setOnClickListener(null)
+                confirmButton.isEnabled = false
             }
         }
     }
@@ -63,7 +65,8 @@ class CartFragment : BaseFragment<CartPresenter, CartMvpView>() {
         itemsList.adapter = adapter
         itemsList.layoutManager = LinearLayoutManager(context)
         itemsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-
+        confirmButton.setOnClickListener(checkoutClickListener)
+        confirmButton.setAccessibilityClassNameButton()
     }
 
     override fun layoutId(): Int {

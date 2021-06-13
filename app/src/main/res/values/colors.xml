@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#007AFF</color>
     <color name="black_primary">#000000</color>
-    <color name="green">#08A652</color>
+    <color name="green">#FF08A652</color>
+    <color name="green_disabled">#4D08A652</color>
     <color name="black_60">#96000000</color>
     <color name="black_12">#1A000000</color>
     <color name="black_55">#8C000000</color>

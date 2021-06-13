@@ -46,7 +46,8 @@ class CheckoutPresenter(
                     it.id,
                     it.icon,
                     it.address,
-                    it.additionalInfo
+                    it.additionalInfo,
+                    addreInteractor.selectedAddress == it.id
                 )
             } as ArrayList<SelectorItemModel>
         )
