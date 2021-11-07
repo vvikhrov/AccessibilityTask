@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
 import com.sweethome.base.MvpView
@@ -63,6 +64,8 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
         price = view.findViewById(R.id.price)
         cartBtn = view.findViewById(R.id.cart_icon)
 
+        val aboutTitle: TextView = view.findViewById(R.id.details_title_about)
+        ViewCompat.setAccessibilityHeading(aboutTitle, true);
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

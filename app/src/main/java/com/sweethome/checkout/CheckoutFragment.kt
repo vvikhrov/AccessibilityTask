@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import androidx.core.view.children
 import com.sweethome.R
 import com.sweethome.base.BaseFragment
@@ -83,6 +84,13 @@ class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
         shipmentPrice = view.findViewById(R.id.shipment_price)
         totalPrice = view.findViewById(R.id.total_price)
         deliveryTypesContainer = view.findViewById(R.id.delivery_types_container)
+
+        val deliveryTitle: TextView = view.findViewById(R.id.title_delivery)
+        val shipmentTitle: TextView = view.findViewById(R.id.title_shipment)
+        val paymentTitle: TextView = view.findViewById(R.id.title_payment)
+        ViewCompat.setAccessibilityHeading(deliveryTitle, true);
+        ViewCompat.setAccessibilityHeading(shipmentTitle, true);
+        ViewCompat.setAccessibilityHeading(paymentTitle, true);
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
