@@ -52,7 +52,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/blue_circle"
             android:gravity="center"
-            android:importantForAccessibility="2"
+            android:importantForAccessibility="no"
             android:text="2"
             android:textColor="@color/white"
             android:textSize="11dp" />

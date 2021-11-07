@@ -3,11 +3,15 @@ package com.sweethome.checkout.delivery
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.sweethome.R
 
 class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
@@ -57,6 +61,17 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
             onChosenListener?.onItemChosen(item.id)
         }
         contentDescription = stringBuilder.toString()
+
+        ViewCompat.setAccessibilityDelegate(this, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = CheckBox::class.java.name
+                info.isCheckable = true
+                info.isChecked = item.chosen
+            }
+        })
     }
 
     override fun getAccessibilityClassName(): CharSequence {

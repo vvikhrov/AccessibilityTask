@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sweethome.R
 
@@ -38,14 +41,27 @@ class SelectorAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         holder.subtitle.text = item.subtitle
         holder.icon.setImageResource(item.imageId)
         holder.checkbox.isChecked = item.checked
-
-        holder.checkbox.setOnClickListener {
+        holder.itemView.setOnClickListener {
             checkedChangeListener?.onCheckedChange(
                 item,
-                !item.checked
+                !holder.checkbox.isChecked
             )
-
         }
+
+        ViewCompat.setAccessibilityDelegate(holder.itemView, object: AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host:View,
+                                                           info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info.className = CheckBox::class.java.name
+                info.isCheckable = true
+                info.isChecked = holder.checkbox.isChecked
+            }
+        })
+    }
+
+    override fun getItemId(position: Int): Long {
+        return itemsList[position].id.hashCode().toLong()
     }
 
     fun setCheckedChangeListener(changeListener: CheckedChangeListener) {
