@@ -18,4 +18,6 @@
     <string name="payment_type">Payment</string>
     <string name="time_from_to">%1$s-%2$s days</string>
     <string name="delivery_time">%s days</string>
+
+    <string name="chistiprudnui">Chistoprudnui boulevard, 6/19 building 1</string>
 </resources>

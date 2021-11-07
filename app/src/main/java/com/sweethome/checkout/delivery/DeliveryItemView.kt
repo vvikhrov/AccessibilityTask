@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.TextView
 import com.sweethome.R
 
@@ -15,9 +16,13 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
     var company: TextView
     var time: TextView
     var price: TextView
-    var toggle: ImageView
+    var toggle: RadioButton
 
     var chosen: Boolean = false
+        set(value) {
+            field = value
+            toggle.isChecked = value
+        }
 
     var onChosenListener: OnChosenListener? = null
 
@@ -38,14 +43,8 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
             time.text = resources.getString(R.string.time_from_to, item.timeFrom, item.timeTo)
         }
         price.text = item.price
-        if (item.chosen)  {
-            chosen = true
-            toggle.setImageResource(R.drawable.ic_toggle_checked)
-        } else {
-            chosen = false
-            toggle.setImageResource(R.drawable.ic_toggle_unchecked)
-        }
-        toggle.setOnClickListener {
+        chosen = item.chosen
+        setOnClickListener {
             onChosenListener?.onItemChosen(item.id)
         }
     }

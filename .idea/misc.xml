@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3145833333333333" />
+        <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.3145833333333333" />
+        <entry key="app/src/main/res/layout/cart_item.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/catalog_category_item.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/category_item_layout.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/checkout_layout.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/delivery_type_item.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/item_info_layout.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/payment_view_layout.xml" value="0.46195652173913043" />
+        <entry key="app/src/main/res/layout/selectable_item_layout.xml" value="0.4891304347826087" />
+        <entry key="app/src/main/res/layout/shop_catalog_layout.xml" value="0.3145833333333333" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.3145833333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

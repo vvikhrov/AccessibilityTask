@@ -1,6 +1,7 @@
 package com.sweethome.checkout.address
 
 import com.sweethome.R
+import com.sweethome.SweetHomeApplication
 import java.util.*
 
 class AddressInteractor {
@@ -15,7 +16,7 @@ class AddressInteractor {
         val WORK = AddressViewModel(
             UUID.randomUUID().toString(),
             R.drawable.address_icon,
-            "Чистопрудный бульвар, 6/19с1",
+            SweetHomeApplication.getInstance().getString(R.string.chistiprudnui),
             "Москва, Россия, 101000"
         )
     }

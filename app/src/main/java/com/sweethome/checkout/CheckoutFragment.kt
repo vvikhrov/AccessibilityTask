@@ -3,7 +3,10 @@ package com.sweethome.checkout
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.view.children
 import com.sweethome.R
@@ -16,6 +19,7 @@ import com.sweethome.checkout.delivery.DeliveryItemView
 import com.sweethome.checkout.delivery.DeliveryType
 import com.sweethome.checkout.delivery.DeliveryViewModel
 import com.sweethome.checkout.delivery.OnChosenListener
+import java.lang.Exception
 import kotlin.collections.ArrayList
 
 class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
@@ -118,6 +122,7 @@ class CheckoutFragment : BaseFragment<CheckoutPresenter, CheckoutMvpView>() {
     private fun fillDeliveryViews(deliveryTypes: ArrayList<DeliveryViewModel>) {
         for (item in deliveryTypes) {
             val itemView = context?.let { DeliveryItemView(it) }
+
             itemView?.update(item)
             itemView?.onChosenListener = object : OnChosenListener {
                 override fun onItemChosen(id: String) {

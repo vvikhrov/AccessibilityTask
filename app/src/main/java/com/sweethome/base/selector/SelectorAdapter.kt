@@ -1,5 +1,6 @@
 package com.sweethome.base.selector
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,10 +40,14 @@ class SelectorAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         holder.icon.setImageResource(item.imageId)
         holder.checkbox.isChecked = item.checked
 
-        holder.checkbox.setOnClickListener {
+        holder.itemView.setOnClickListener {
+            Log.d("kek", "here")
+            item.checked = !holder.checkbox.isSelected
+
+            holder.checkbox.isSelected = item.checked
             checkedChangeListener?.onCheckedChange(
                 item,
-                !item.checked
+                item.checked
             )
 
         }

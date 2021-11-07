@@ -31,7 +31,9 @@
                 android:text="@string/shipment_address"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:accessibilityHeading="true"
+                android:focusable="true"/>
 
             <com.sweethome.base.selector.HorizontalSelector
                 android:id="@+id/shipment_address_selector"
@@ -48,7 +50,9 @@
                 android:text="@string/delivery_type"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:accessibilityHeading="true"
+                android:focusable="true"/>
 
             <LinearLayout
                 android:id="@+id/delivery_types_container"
@@ -66,7 +70,9 @@
                 android:text="@string/payment_type"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:accessibilityHeading="true"
+                android:focusable="true"/>
 
             <com.sweethome.base.selector.HorizontalSelector
                 android:id="@+id/payment_types"
@@ -107,25 +113,34 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/total"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_price_title"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@id/total_price"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/total_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:gravity="end"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="₽ 3835" />
+            android:screenReaderFocusable="true"
+            android:importantForAccessibility="yes">
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_price_title"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="₽ 3835" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
