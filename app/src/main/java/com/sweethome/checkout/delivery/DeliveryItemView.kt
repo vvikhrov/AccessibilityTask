@@ -3,6 +3,8 @@ package com.sweethome.checkout.delivery
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.accessibility.AccessibilityEvent
+import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -31,13 +33,19 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
     }
 
     fun update(item: DeliveryViewModel) {
+        val stringBuilder = StringBuilder()
         company.text = item.name
+        stringBuilder.append(item.name)
         if (item.timeFrom == item.timeTo) {
             time.text = resources.getString(R.string.delivery_time)
+            stringBuilder.append(resources.getString(R.string.delivery_time))
         } else {
             time.text = resources.getString(R.string.time_from_to, item.timeFrom, item.timeTo)
+            stringBuilder.append(resources.getString(R.string.time_from_to, item.timeFrom, item.timeTo))
         }
         price.text = item.price
+        stringBuilder.append(item.price)
+        val event = AccessibilityEvent.obtain()
         if (item.chosen)  {
             chosen = true
             toggle.setImageResource(R.drawable.ic_toggle_checked)
@@ -45,9 +53,14 @@ class DeliveryItemView(context: Context, attributeSet: AttributeSet?) :
             chosen = false
             toggle.setImageResource(R.drawable.ic_toggle_unchecked)
         }
-        toggle.setOnClickListener {
+        this.setOnClickListener {
             onChosenListener?.onItemChosen(item.id)
         }
+        contentDescription = stringBuilder.toString()
+    }
+
+    override fun getAccessibilityClassName(): CharSequence {
+        return CheckBox::class.java.name
     }
 }
 
