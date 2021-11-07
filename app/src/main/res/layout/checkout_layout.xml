@@ -90,12 +90,14 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/confirm_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="lollipop_mr1">
 
         <TextView
             android:id="@+id/subtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalBefore="@id/shipment_price"
             android:text="@string/subtotal_price"
             app:layout_constraintBottom_toTopOf="@id/shipment_price"
             app:layout_constraintEnd_toStartOf="@id/total"
@@ -106,6 +108,8 @@
             android:id="@+id/shipment_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/subtotal"
+            android:accessibilityTraversalBefore="@id/total"
             android:text="@string/shipment_price"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -114,6 +118,8 @@
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/shipment_price"
+            android:accessibilityTraversalBefore="@id/total_price"
             android:text="@string/total_price_title"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/total_price"
@@ -123,6 +129,7 @@
             android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:accessibilityTraversalAfter="@id/total"
             android:fontFamily="sans-serif"
             android:textSize="24sp"
             android:textStyle="bold"
