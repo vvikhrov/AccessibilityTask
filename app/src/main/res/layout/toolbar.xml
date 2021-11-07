@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/back_button"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginHorizontal="16dp"
-        android:src="@drawable/ic_baseline_arrow_back_24" />
+        android:scaleType="center"
+        android:src="@drawable/ic_baseline_arrow_back_24"/>
 
     <TextView
         android:id="@+id/screen_title"
@@ -36,9 +36,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cart_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_gravity="center"
+            android:scaleType="center"
             app:srcCompat="@drawable/ic_shopping_cart" />
 
         <TextView
