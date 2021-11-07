@@ -19,4 +19,10 @@
     <string name="payment_type">Способ оплаты</string>
     <string name="time_from_to">%1$s-%2$s дней</string>
     <string name="delivery_time">%s дня</string>
+
+    <!--content description-->
+    <string name="cd_back">Назад</string>
+    <string name="cd_cart">Корзина</string>
+    <string name="cd_big_picture">Большая картинка товара</string>
+
 </resources>

@@ -10,6 +10,7 @@
         android:layout_height="164dp"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/cd_big_picture"
         app:srcCompat="@drawable/placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

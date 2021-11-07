@@ -12,8 +12,9 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_gravity="center_vertical"
+        android:contentDescription="@string/cd_back"
         android:scaleType="center"
-        android:src="@drawable/ic_baseline_arrow_back_24"/>
+        android:src="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/screen_title"
@@ -31,14 +32,15 @@
         android:id="@+id/cart_button"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:visibility="gone"
-        android:layout_gravity="end">
+        android:layout_gravity="end"
+        android:visibility="gone">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cart_icon"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/cd_cart"
             android:scaleType="center"
             app:srcCompat="@drawable/ic_shopping_cart" />
 
@@ -47,10 +49,10 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_gravity="top|end"
-            android:gravity="center"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/blue_circle"
+            android:gravity="center"
             android:text="2"
             android:textColor="@color/white"
             android:textSize="11dp" />

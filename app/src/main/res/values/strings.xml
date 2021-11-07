@@ -18,4 +18,10 @@
     <string name="payment_type">Payment</string>
     <string name="time_from_to">%1$s-%2$s days</string>
     <string name="delivery_time">%s days</string>
+
+    <!--content description-->
+    <string name="cd_back">Back</string>
+    <string name="cd_cart">Cart</string>
+    <string name="cd_big_picture">Big item picture</string>
+
 </resources>
