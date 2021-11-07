@@ -24,6 +24,7 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_big_picture"
                 app:srcCompat="@drawable/placeholder" />
 
             <TextView
@@ -64,6 +65,7 @@
                 android:background="@color/black_12" />
 
             <TextView
+                android:id="@+id/details_title_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -103,33 +105,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/designer_field"
                     android:textSize="16sp"
-                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/designer"
+                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/designer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/designer_field"
                     android:layout_marginEnd="12dp"
-                    android:textSize="16sp"
                     android:fontFamily="sans-serif"
+                    android:text="@string/designer_field"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/forward"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/forward"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    app:srcCompat="@drawable/ic_arrow_forward"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:srcCompat="@drawable/ic_arrow_forward" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

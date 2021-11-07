@@ -18,4 +18,21 @@
     <string name="payment_type">Payment</string>
     <string name="time_from_to">%1$s-%2$s days</string>
     <string name="delivery_time">%s days</string>
+
+    <!--content description-->
+    <string name="cd_back">Back</string>
+    <string name="cd_big_picture">Big item picture</string>
+    <plurals name="cd_cart">
+        <!--
+             As a developer, you should always supply "one" and "other"
+             strings. Your translators will know which strings are actually
+             needed for their language. Always include %d in "one" because
+             translators will need to use %d for languages where "one"
+             doesn't mean 1 (as explained above).
+          -->
+        <item quantity="zero">Cart</item>
+        <item quantity="one">Cart with %d item.</item>
+        <item quantity="other">Cart with %d items</item>
+    </plurals>
+
 </resources>

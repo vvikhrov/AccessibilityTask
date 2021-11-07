@@ -13,6 +13,7 @@ class HorizontalSelector(context: Context, attributeSet: AttributeSet): Recycler
     private val selectorAdapter: SelectorAdapter = SelectorAdapter()
 
     init {
+        selectorAdapter.setHasStableIds(true)
         addItemDecoration(StartEndOffsetItemDecoration(context.resources.getDimensionPixelOffset(R.dimen.catalog_offset)))
         layoutManager = object : LinearLayoutManager(context, HORIZONTAL, false) {
             override fun checkLayoutParams(lp: LayoutParams): Boolean {

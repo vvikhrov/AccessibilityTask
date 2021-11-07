@@ -2,7 +2,6 @@ package com.sweethome.checkout
 
 import com.sweethome.CartRepository
 import com.sweethome.MockLoader
-import com.sweethome.R
 import com.sweethome.RootRouter
 import com.sweethome.base.MockPresenter
 import com.sweethome.base.selector.SelectorItemModel
@@ -15,7 +14,7 @@ class CheckoutPresenter(
     rootRouter: RootRouter,
     mockLoader: MockLoader,
     val cartRepository: CartRepository
-): MockPresenter<CheckoutMvpView>(mockLoader) {
+) : MockPresenter<CheckoutMvpView>(mockLoader) {
 
     private lateinit var itemsPrice: String
     private val paymentInteractor = PaymentInteractor()
@@ -27,7 +26,7 @@ class CheckoutPresenter(
         super.attach(mvpView)
         updateAddresses()
         updateDeliveryTypes()
-        upatePaymentMethods()
+        updatePaymentMethods()
         updateFooter()
     }
 
@@ -46,7 +45,8 @@ class CheckoutPresenter(
                     it.id,
                     it.icon,
                     it.address,
-                    it.additionalInfo
+                    it.additionalInfo,
+                    it.id == addreInteractor.selectedAddress
                 )
             } as ArrayList<SelectorItemModel>
         )
@@ -68,7 +68,7 @@ class CheckoutPresenter(
 
     }
 
-    private fun upatePaymentMethods() {
+    private fun updatePaymentMethods() {
         mvpView?.updatePaymentTypes(
             paymentInteractor.getPaymentMethods()
                 .map {
@@ -95,7 +95,7 @@ class CheckoutPresenter(
         checked: Boolean
     ) {
         paymentInteractor.selectedPayment = item.id
-        upatePaymentMethods()
+        updatePaymentMethods()
     }
 
     fun onConfirm() {

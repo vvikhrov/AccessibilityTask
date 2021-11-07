@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sweethome.R
 import com.sweethome.shop.category.CategoryRecyclerView
@@ -21,11 +22,11 @@ class CatalogAdapter : RecyclerView.Adapter<CategoryViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        return CategoryViewHolder(
-                LayoutInflater.from(
-                    parent.context
-                ).inflate(R.layout.catalog_category_item, parent, false)
-            )
+        val view = LayoutInflater.from(
+            parent.context
+        ).inflate(R.layout.catalog_category_item, parent, false)
+        ViewCompat.setAccessibilityHeading(view, true);
+        return CategoryViewHolder(view)
     }
 
     fun setOnItemClickListener(itemClickListener: OnItemClickListener) {
