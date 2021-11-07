@@ -31,6 +31,9 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
                     cartItemsAmount.visibility = View.VISIBLE
                     cartItemsAmount.text = itemsCount.toString()
                 }
+                cartBtn.contentDescription =
+                    resources.getQuantityString(R.plurals.cd_cart, itemsCount, itemsCount)
+
             }
 
             override fun updateInfo(viewModel: FullItemViewModel) {
@@ -65,7 +68,7 @@ class ItemInfoFragment : BaseFragment<ItemInfoPresenter, ItemInfoMvpView>() {
         cartBtn = view.findViewById(R.id.cart_icon)
 
         val aboutTitle: TextView = view.findViewById(R.id.details_title_about)
-        ViewCompat.setAccessibilityHeading(aboutTitle, true);
+        ViewCompat.setAccessibilityHeading(aboutTitle, true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

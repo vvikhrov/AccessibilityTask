@@ -38,6 +38,8 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
                     cartItemsAmount.visibility = View.VISIBLE
                     cartItemsAmount.text = itemsCount.toString()
                 }
+                cartIcon.contentDescription =
+                    resources.getQuantityString(R.plurals.cd_cart, itemsCount, itemsCount)
             }
         }
     }
@@ -85,7 +87,7 @@ class CatalogFragment : BaseFragment<CatalogPresenter, CatalogMvpView>() {
     }
 }
 
-interface CatalogMvpView: MvpView {
+interface CatalogMvpView : MvpView {
     fun updateList(models: ArrayList<CategoryViewModel>)
     fun updateItemsCount(itemsCount: Int)
 }
