@@ -5,5 +5,5 @@ data class SelectorItemModel(
     val imageId: Int,
     val title: String,
     val subtitle: String = "",
-    val checked: Boolean = false
+    var checked: Boolean = false
 )
